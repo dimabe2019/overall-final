@@ -1,0 +1,22 @@
+body{
+	background: url(../img/decarga2.png) no-repeat center center fixed;
+	background-size: cover;
+}
+nav{
+	opacity: .90;
+	box-shadow: 0px 0px 3px 
+}
+
+.form-input{
+	font-family: "Font Awesome\ 5 Free";
+	position: absolute;
+	left: 28px;
+	content: "\f023";
+}
+
+.ul{
+	 list-style:none;
+	 left: 28px;
+}
+
+
