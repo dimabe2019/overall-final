@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 14-10-2020 a las 04:48:43
+-- Tiempo de generación: 17-10-2020 a las 04:57:52
 -- Versión del servidor: 10.4.11-MariaDB
 -- Versión de PHP: 7.4.5
 
@@ -24,27 +24,6 @@ SET time_zone = "+00:00";
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `clientes`
---
-
-CREATE TABLE `clientes` (
-  `codCli` int(11) NOT NULL,
-  `nombre` varchar(30) NOT NULL,
-  `correo` varchar(30) NOT NULL,
-  `pas` varchar(30) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-
---
--- Volcado de datos para la tabla `clientes`
---
-
-INSERT INTO `clientes` (`codCli`, `nombre`, `correo`, `pas`) VALUES
-(1, 'Jose Alonso', 'jose@gmail.com', 'abc123'),
-(2, 'Diego Martinez', 'diego@gmail.com', 'abc456');
-
--- --------------------------------------------------------
-
---
 -- Estructura de tabla para la tabla `detallepedido`
 --
 
@@ -61,6 +40,29 @@ CREATE TABLE `detallepedido` (
 INSERT INTO `detallepedido` (`numPedido`, `codpro`, `can`) VALUES
 (1, 2, 2),
 (1, 3, 3);
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `nuestrosproductos`
+--
+
+CREATE TABLE `nuestrosproductos` (
+  `ID` int(11) NOT NULL,
+  `Nombre` varchar(255) NOT NULL,
+  `Precio` decimal(20,2) NOT NULL,
+  `Descripcion` text NOT NULL,
+  `Imagen` varchar(255) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Volcado de datos para la tabla `nuestrosproductos`
+--
+
+INSERT INTO `nuestrosproductos` (`ID`, `Nombre`, `Precio`, `Descripcion`, `Imagen`) VALUES
+(1, 'Allanadora de concreto', '2500000.00', 'Allanadora de concreto para pulir pisos de cemento, deja un acabado liso o riguroso ideal para parqueaderos.\r\n\r\nCantidad disponibles: 10 unidades', 'allanadora.jpg'),
+(2, 'Cortadora de diamante', '1500000.00', 'Cortadora de diamante manual eléctrica en seco, profundida de corte de hasta de 120 mm, es la cortadora mas segura del mundo, cuchilla de 305 mm.\r\n\r\n\r\nCantidad disponibles: 5 unidades', 'cortadora.jpg'),
+(3, 'Cortadora de pavimento', '1850000.00', 'Cortadora de pavimento para cortes lineales y perfectos, entre 5 y 10 metros de profundidad.\r\n\r\n\r\nCantidad disponibles: 7 unidades', 'cortaPavimento.jpg');
 
 -- --------------------------------------------------------
 
@@ -102,25 +104,40 @@ CREATE TABLE `productos` (
 --
 
 INSERT INTO `productos` (`codpro`, `descripcion`, `precio`, `stock`, `estado`, `detalle`, `imagen`) VALUES
-(1, 'Taladro', '1800.00', 150, 'Normal', 'Taladro con punta de diamente de 45 pulgadas', 'Taladro.jpg'),
-(2, 'Aplanadora', '1200.00', 20, 'Oferta', 'Aplanadora con fuerza de 90 pci', 'Aplanadora.jpg'),
-(3, 'Martillo', '800.00', 30, 'Normal', 'Martillo de acero inoxidable con cabezal utral fuerte', 'Martillo.jpg'),
-(4, 'Licuadora industrial', '400.00', 27, 'Normal', 'Licuadora de 10 velocidades con turbo', 'Licuadora.jpg'),
-(5, 'mezcaldora', '300.00', 42, 'Oferta', 'Mezcladora doble funcion con desachadora de residuo', 'Mezcald.jpg'),
-(6, 'Perforadora', '500.00', 16, 'Normal', 'Perforadora con punta de acero inoxidable', 'Perforadora.jpg'),
-(7, 'Escavadora', '350.00', 26, 'Normal', 'Escavadora con pistones de titanio, especial para la construccion', 'Escavadora.jpg'),
-(8, 'Laminas', '180.00', 22, 'Normal', 'Laminas hechas en aluminio con grosor de 17 cm', 'Laminas.jpg'),
-(9, 'Hidro industrial', '2500.00', 10, 'Oferta', 'Hiroelectrica industrial multiuso con bomba de aire de 100 pci', 'prod3.jpg');
+(1, 'Allanadora', '180.00', 15, 'Normal', 'Allanadora con presion de 100 pci', 'allanadora.jpg'),
+(2, 'Cortadora', '1.20', 20, 'Oferta', 'Cortado en acero inoxidable con chuchillas afiladas', 'cortadora.jpg'),
+(3, 'corta pavimento', '800.00', 30, 'Normal', 'Corta pavimento con disco en aluminio', 'cortaPavimento.jpg'),
+(4, 'Demoledor', '400.00', 27, 'Normal', 'Demoledor con pistones de gran potencia', 'demoledor.jpg'),
+(5, 'Herramientas menores', '30.00', 42, 'Oferta', 'Variedades de herramientas como pico, pala etc', 'herramientasMenores.jpg'),
+(6, 'Mezcladora', '500.00', 16, 'Normal', 'Mezcladora con gran poder de rotacion', 'mezcladora.jpg'),
+(7, 'Pluma Grua', '3500.00', 26, 'Normal', 'Maquinaria para construccion', 'PlumaGrua.jpg'),
+(8, 'RotoMartillo', '180.00', 22, 'Normal', 'Roto Martillo con punta de diamante', 'rotomartillo.jpg');
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `users`
+--
+
+CREATE TABLE `users` (
+  `id` int(11) NOT NULL,
+  `username` varchar(50) NOT NULL,
+  `password` varchar(255) NOT NULL,
+  `created_at` datetime DEFAULT current_timestamp()
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Volcado de datos para la tabla `users`
+--
+
+INSERT INTO `users` (`id`, `username`, `password`, `created_at`) VALUES
+(1, 'ian', '$2y$10$gEyeZhL4kcZfWxybZx8DwOan1wjEO9L7i2RK8RQFLM09Du.iFqQ6S', '2020-10-16 16:30:44'),
+(2, 'diego', '$2y$10$ijL5u4C6wpuh9mFlex0gtukXnohN7MCEoVhqNvzCnr1M9m9RfuqxO', '2020-10-16 16:39:43'),
+(3, 'alonso', '$2y$10$Vr55BEmKDWfD06CgOUs66uycaAlPc2SrdffiRhvdohNOvT6Y962Lq', '2020-10-16 21:39:51');
 
 --
 -- Índices para tablas volcadas
 --
-
---
--- Indices de la tabla `clientes`
---
-ALTER TABLE `clientes`
-  ADD PRIMARY KEY (`codCli`);
 
 --
 -- Indices de la tabla `detallepedido`
@@ -128,6 +145,12 @@ ALTER TABLE `clientes`
 ALTER TABLE `detallepedido`
   ADD KEY `numPedido` (`numPedido`),
   ADD KEY `codpro` (`codpro`);
+
+--
+-- Indices de la tabla `nuestrosproductos`
+--
+ALTER TABLE `nuestrosproductos`
+  ADD PRIMARY KEY (`ID`);
 
 --
 -- Indices de la tabla `pedido`
@@ -142,14 +165,21 @@ ALTER TABLE `productos`
   ADD PRIMARY KEY (`codpro`);
 
 --
+-- Indices de la tabla `users`
+--
+ALTER TABLE `users`
+  ADD PRIMARY KEY (`id`),
+  ADD UNIQUE KEY `username` (`username`);
+
+--
 -- AUTO_INCREMENT de las tablas volcadas
 --
 
 --
--- AUTO_INCREMENT de la tabla `clientes`
+-- AUTO_INCREMENT de la tabla `nuestrosproductos`
 --
-ALTER TABLE `clientes`
-  MODIFY `codCli` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+ALTER TABLE `nuestrosproductos`
+  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT de la tabla `pedido`
@@ -161,7 +191,13 @@ ALTER TABLE `pedido`
 -- AUTO_INCREMENT de la tabla `productos`
 --
 ALTER TABLE `productos`
-  MODIFY `codpro` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+  MODIFY `codpro` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+
+--
+-- AUTO_INCREMENT de la tabla `users`
+--
+ALTER TABLE `users`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
