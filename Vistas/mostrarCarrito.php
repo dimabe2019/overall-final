@@ -84,7 +84,7 @@ if(!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true){
                Los productos se enviaran a este correo
                </small>
               </div>
-              <button class="btn btn-primary btn-lg btn-block" name="btnAccion" value="proceder" type="submit">Proceder a cotizar</button>
+              <button class="btn btn-success float-right" name="btnAccion" value="proceder" type="submit">Proceder a cotizar</button>
               </form>
 
               </td>
