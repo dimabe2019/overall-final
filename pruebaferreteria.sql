@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 17-10-2020 a las 04:57:52
+-- Tiempo de generación: 19-10-2020 a las 00:02:00
 -- Versión del servidor: 10.4.11-MariaDB
 -- Versión de PHP: 7.4.5
 
@@ -40,6 +40,31 @@ CREATE TABLE `detallepedido` (
 INSERT INTO `detallepedido` (`numPedido`, `codpro`, `can`) VALUES
 (1, 2, 2),
 (1, 3, 3);
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `detalleventa`
+--
+
+CREATE TABLE `detalleventa` (
+  `ID` int(11) NOT NULL,
+  `IDVENTA` int(11) NOT NULL,
+  `IDPRODUCTO` int(11) NOT NULL,
+  `PRECIOUNITARIO` decimal(20,2) NOT NULL,
+  `CANTIDAD` int(11) NOT NULL,
+  `DESCARGADO` int(1) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Volcado de datos para la tabla `detalleventa`
+--
+
+INSERT INTO `detalleventa` (`ID`, `IDVENTA`, `IDPRODUCTO`, `PRECIOUNITARIO`, `CANTIDAD`, `DESCARGADO`) VALUES
+(1, 10, 1, '2500000.00', 1, 0),
+(2, 10, 2, '1500000.00', 1, 0),
+(3, 10, 3, '1850000.00', 1, 0),
+(4, 11, 1, '2500000.00', 1, 0);
 
 -- --------------------------------------------------------
 
@@ -132,8 +157,41 @@ CREATE TABLE `users` (
 
 INSERT INTO `users` (`id`, `username`, `password`, `created_at`) VALUES
 (1, 'ian', '$2y$10$gEyeZhL4kcZfWxybZx8DwOan1wjEO9L7i2RK8RQFLM09Du.iFqQ6S', '2020-10-16 16:30:44'),
-(2, 'diego', '$2y$10$ijL5u4C6wpuh9mFlex0gtukXnohN7MCEoVhqNvzCnr1M9m9RfuqxO', '2020-10-16 16:39:43'),
+(2, 'diego', '$2y$10$hZy76ArtbtnCtvG4YqtkFeD5Y4twVr4ylOTUfLhxRhPCBLuNJWWbC', '2020-10-16 16:39:43'),
 (3, 'alonso', '$2y$10$Vr55BEmKDWfD06CgOUs66uycaAlPc2SrdffiRhvdohNOvT6Y962Lq', '2020-10-16 21:39:51');
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `ventas`
+--
+
+CREATE TABLE `ventas` (
+  `ID` int(11) NOT NULL,
+  `ClaveTransaccion` varchar(250) NOT NULL,
+  `PayplaDatos` text NOT NULL,
+  `Fecha` datetime NOT NULL,
+  `Correo` varchar(5000) NOT NULL,
+  `Total` decimal(60,2) NOT NULL,
+  `Status` varchar(200) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Volcado de datos para la tabla `ventas`
+--
+
+INSERT INTO `ventas` (`ID`, `ClaveTransaccion`, `PayplaDatos`, `Fecha`, `Correo`, `Total`, `Status`) VALUES
+(1, '12345678910', '', '2020-10-18 14:35:05', 'diego72034@gmail.com', '700.00', 'pendiente'),
+(2, '12345678910', '', '2020-10-18 14:35:05', 'diego72034@gmail.com', '700.00', 'pendiente'),
+(3, '1oefesgklfq53u8ds1i5pjnmp5', '', '2020-10-18 15:06:08', 'diego72034@gmail.com', '2500000.00', 'pendiente'),
+(4, '1oefesgklfq53u8ds1i5pjnmp5', '', '2020-10-18 15:11:23', 'PajeroAlonso@hotmail.com', '4000000.00', 'pendiente'),
+(5, '1oefesgklfq53u8ds1i5pjnmp5', '', '2020-10-18 15:42:46', 'diego72034@gmail.com', '5850000.00', 'pendiente'),
+(6, '1oefesgklfq53u8ds1i5pjnmp5', '', '2020-10-18 15:55:37', 'ian@yahoo.es', '5850000.00', 'pendiente'),
+(7, '1oefesgklfq53u8ds1i5pjnmp5', '', '2020-10-18 15:56:51', 'ian@yahoo.es', '5850000.00', 'pendiente'),
+(8, '1oefesgklfq53u8ds1i5pjnmp5', '', '2020-10-18 15:58:47', 'ian@yahoo.es', '5850000.00', 'pendiente'),
+(9, '1oefesgklfq53u8ds1i5pjnmp5', '', '2020-10-18 16:00:06', 'ian@yahoo.es', '5850000.00', 'pendiente'),
+(10, '1oefesgklfq53u8ds1i5pjnmp5', '', '2020-10-18 16:04:33', 'ian@yahoo.es', '5850000.00', 'pendiente'),
+(11, 'jjh60l5sjgkf3uqr4cbb8grk06', '', '2020-10-18 16:55:18', 'diego72034@gmail.com', '2500000.00', 'pendiente');
 
 --
 -- Índices para tablas volcadas
@@ -145,6 +203,14 @@ INSERT INTO `users` (`id`, `username`, `password`, `created_at`) VALUES
 ALTER TABLE `detallepedido`
   ADD KEY `numPedido` (`numPedido`),
   ADD KEY `codpro` (`codpro`);
+
+--
+-- Indices de la tabla `detalleventa`
+--
+ALTER TABLE `detalleventa`
+  ADD PRIMARY KEY (`ID`),
+  ADD KEY `IDVENTA` (`IDVENTA`),
+  ADD KEY `IDPRODUCTO` (`IDPRODUCTO`);
 
 --
 -- Indices de la tabla `nuestrosproductos`
@@ -172,8 +238,20 @@ ALTER TABLE `users`
   ADD UNIQUE KEY `username` (`username`);
 
 --
+-- Indices de la tabla `ventas`
+--
+ALTER TABLE `ventas`
+  ADD PRIMARY KEY (`ID`);
+
+--
 -- AUTO_INCREMENT de las tablas volcadas
 --
+
+--
+-- AUTO_INCREMENT de la tabla `detalleventa`
+--
+ALTER TABLE `detalleventa`
+  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT de la tabla `nuestrosproductos`
@@ -198,6 +276,23 @@ ALTER TABLE `productos`
 --
 ALTER TABLE `users`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+
+--
+-- AUTO_INCREMENT de la tabla `ventas`
+--
+ALTER TABLE `ventas`
+  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
+
+--
+-- Restricciones para tablas volcadas
+--
+
+--
+-- Filtros para la tabla `detalleventa`
+--
+ALTER TABLE `detalleventa`
+  ADD CONSTRAINT `detalleventa_ibfk_1` FOREIGN KEY (`IDVENTA`) REFERENCES `ventas` (`ID`) ON DELETE CASCADE ON UPDATE CASCADE,
+  ADD CONSTRAINT `detalleventa_ibfk_2` FOREIGN KEY (`IDPRODUCTO`) REFERENCES `nuestrosproductos` (`ID`) ON DELETE CASCADE ON UPDATE CASCADE;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
