@@ -4,9 +4,6 @@ include '../Utils/conexion.php';
 include '../Vistas/carrito.php';
 
 
-define("KEY", "softinstante"); //Llave de la encryptacion
-define("COD", "AES-128-ECB"); //Esta es la encryptacion
-
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -26,10 +23,12 @@ define("COD", "AES-128-ECB"); //Esta es la encryptacion
 
    <?php include '../Vistas/encabezado.php';?>
 
+  <?php if($mensaje != "") { ?>
    <div class="alert alert-success">
    	<?php echo $mensaje;//print_r($_POST);?> 
-	   <a href="#" class="badge badge-success">Ver Carrito</a>
+	   <a href="mostrarCarrito.php" class="badge badge-success">Ver Carrito</a>
    </div>
+  <?php } ?>
 
    <div class="row">
 	   <?php
