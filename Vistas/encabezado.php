@@ -1,33 +1,57 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Overall</title>
-</head>
-<body>
-
-<nav class="nav nav-pills nav-fill" style="border:outset;padding: 0 25px;">
-<a class="navbar-brand" href="Catalogo.php">
-    <img src="../img/imgEnca/photo5006105819296671891.png" width="80" height="50" class="d-inline-block align-top" alt="" loading="lazy">
-    <!-- Overall -->
+<!--  Inicio del encabezado -->
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+  <a class="navbar-brand" href="Catalogo.php">
+    <img src="../img/imgEnca/photo5006105819296671891.png" class="rounded-circle" width="50" height="50" alt="" loading="lazy">
+    OverAll
   </a>
-  <!--<form class="form-inline my-2 my-lg-0">
-      <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
-      <button class="btn btn-warning my-2 my-sm-0" type="submit">Search</button>
-    </form> -->
-  <a class="nav-link" style="color:black;" href="nuestrosProductos.php">Nuestros Productos</a>
-  <a class="nav-link" style="color:black;" href="#">Nuestras Ferreterias</a>
-  <!-- <a class="nav-link" style="color:black;" href="#">Acerca de Nosotros</a> -->
-  <a class="nav-link" style="color:black;" href="#">Contacto</a>
-  <a class="nav-link" style="color:black;" href="login.php"><span class="badge badge-light"><?php 
-  
-    echo (empty($_SESSION['CARRITO']))?0:count($_SESSION['CARRITO']);
-  ?></span><img width="30" height="30" src="../img/carrito-de-compras.png"></a>
-  <!-- <a class="nav-link" style="color:black;margin: 0px;padding: 0px;" href="#"><span class="badge badge-light">0</span><img style="padding: 0px;" width="30px" height="30px" src="img/carrito-de-compras.png" alt="">Link</a> -->
-  <a class="flex-sm-fill text-sm-center nav-link" style="color:black;" href="../Vistas/login.php"><button type="button" style="margin:0px; box-shadow: 0px 0px 3px #848484;padding:5px;" class="btn btn-warning rounded-circle" >Iniciar Sesion</button></a> 
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <div class="collapse navbar-collapse" id="navbarNav">
+    <form class="form-inline my-2 my-lg-0">
+      <input class="form-control mr-sm-2" type="search" placeholder="Buscar" aria-label="Buscar">
+      <div class="input-group-append">
+        <button class="btn btn-info my-2 my-sm-0" type="submit">Buscar</button>
+      </div>
+    </form>  
+    <ul class="navbar-nav mr-auto">
+      <li class="nav-item active">
+        <a class="nav-link" href="nuestrosProductos.php">Nuestros Productos <span class="sr-only">(current)</span>
+          <img src="../img/productos.png" width="20px" height="20px" alt="">
+        </a>
+      </li>
+      <li class="nav-item active">
+        <a class="nav-link" href="#">Nuestros Aliados <span class="sr-only">(current)</span>
+          <img src="../img/colombia.png" width="20px" height="20px" alt="">
+        </a>
+      </li>
+      <!-- <li class="nav-item active">
+        <a class="nav-link" href="contacto.php">Contactenos <span class="sr-only">(current)</span>
+          <img src="img/colombia.png" width="20px" height="20px" alt="">
+        </a>
+      </li> -->
+      <li class="nav-item active">
+        <a class="nav-link" href="nosotros.php">Nosotros <span class="sr-only">(current)</span></a>
+      </li>
+      <li class="nav-item active">
+        <a class="nav-link" href="login.php">
+          <span class="sr-only">(current)</span>
+          <span class="badge badge-light">
+            <?php
+              echo (empty($_SESSION['CARRITO']))?0:count($_SESSION['CARRITO']);
+            ?>
+          </span><img width="30" height="30" src="../img/carrito-de-compras.png">
+          <!-- <img style="padding: 5px;" width="30px" height="30px" src="../img/carrito-de-compras.png" alt=""> -->
+        </a>
+      </li>
+    </ul>
+    <form class="form-inline my-2 my-lg-0" action="login.php">
+        <button class="btn btn-warning my-2 my-sm-2" style="color: white; margin-right: 7px;" type="submit">Entrar</button>
+    </form>
+    <form class="form-inline my-2 my-lg-0" action="logout.php">
+        <button class="btn my-2 my-sm-0" style="background: #2c3e50; color: white;" type="submit">Salir</button>
+    </form> 
+  </div>
 </nav>
 <br>
-    
-</body>
-</html>
+<!-- final del encabezado -->

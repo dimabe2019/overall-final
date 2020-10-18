@@ -10,9 +10,10 @@ $lista=$objMetodos->ListarProductosCod($cod);
 
 foreach($lista as $row) {
 
-    $nombre=$row[1];
-    $precio=$row[2];
-    $detalle=$row[5];
+    $Nombre=$row[1];
+    $Precio=$row[2];
+    $Descripcion=$row[3];
+    $Imagen=$row[4];
 }
 
 ?>
@@ -27,29 +28,20 @@ foreach($lista as $row) {
 <body>
 
 <form action="">
-    <table border="0">
-        <tr>
-           <th rowspan="4"><img src="../img/imgProd/<?php echo $nombre ?>.jpg" width="200" height="170"></th>
-           <th><?php echo $nombre; ?></th>
-        </tr>
-        <tr>
-            <td align="justify"><?php echo $detalle; ?> </td>
-        </tr>
-        <tr>
-            <td align="right">$/. <?php echo $precio; ?></td>
-        </tr>
-        <!-- <tr>
-            <td align="right">Ingresar cantidad: 
-                <input type="number" min="1" max="100" value="1" name="txtCan">
-            </td>
-        </tr> -->
-        <tr>
-            <th align="right" colspan="2">
-                <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
-                <!-- <button type="button" class="btn btn-primary">Agregar a carrito</button> -->
-            </th>
-        </tr>
-    </table>
+    <div class="mb-3" style="max-width: 540px;">
+        <div class="row no-gutters">
+            <div class="col-md-4">
+                <img src="data:image/png;base64,<?php echo base64_encode($Imagen);?>" width="auto" height="auto" class="card-img" alt="...">
+            </div>
+            <div class="col-md-8">
+            <div class="card-body">
+                <h5 class="card-title"><?php echo $Nombre; ?></h5>
+                <p class="card-text"><?php echo $Descripcion; ?></p>
+                <h5 class="card-text">$ <?php echo $Precio; ?></h5>
+            </div>
+            </div>
+        </div>
+    </div>
 </form>
     
 </body>
