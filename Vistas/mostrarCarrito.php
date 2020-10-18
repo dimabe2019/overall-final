@@ -55,7 +55,15 @@ if(!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true){
                 <td width="15%" class="text-center"><?php echo $producto['CANTIDAD']?></td>
                 <td width="20%" class="text-center">$<?php echo $producto['PRECIO']?></td>
                 <td width="20%" class="text-center">$<?php echo number_format($producto['PRECIO'] * $producto['CANTIDAD'],2 );?></td>
-                <td width="5%"> <button class="btn btn-danger" type="button">Eliminar</button></td>
+                <td width="5%">
+                
+                 <form action="" method="post">
+                     <input type="hidden" name="id"  id="id" value="<?php echo $producto['ID'];?>">
+                 <button class="btn btn-danger" name="btnAccion" value="Eliminar" type="submit">Eliminar</button>
+                 </form>
+                 
+                
+                </td>
             </tr>
             <?php $total=$total+($producto['PRECIO']*$producto['CANTIDAD']); ?>
             <?php } ?>
@@ -63,6 +71,23 @@ if(!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true){
                 <td colspan="3" align="right"><h3>Total</h3></td>
                 <td align="right"><h3>$<?php echo number_format($total,2);?></h3></td>
                 <td></td>
+            </tr>
+            <tr>
+              <td colspan="5">
+              <form action="cotizar.php" method="post">
+              <div class="alert alert-primary" role="alert">
+              <div class="form-group">
+                   <label for="my-input">Correo de contacto:</label>
+                   <input id="emial" name="email" class="form-control" type="email" placeholder="Por favor escribe tu correo" required>
+               </div>
+               <small id="emailHelp" class="form-text text-muted">
+               Los productos se enviaran a este correo
+               </small>
+              </div>
+              <button class="btn btn-primary btn-lg btn-block" name="btnAccion" value="proceder" type="submit">Proceder a cotizar</button>
+              </form>
+
+              </td>
             </tr>
         </tbody>
     </table>

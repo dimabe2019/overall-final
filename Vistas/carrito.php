@@ -48,8 +48,16 @@ if (isset($_POST['btnAccion'])) {
 
                 );
                 $_SESSION['CARRITO'][0] = $producto; 
+                $mensaje = "Producto agregado al carrito";
 
             } else {
+
+                $idProductos = array_column($_SESSION['CARRITO'],"ID");
+
+                if(in_array($ID,$idProductos)) {
+                      echo "<script>alert('El producto ya ha sido seleccionado');</script>";
+                      $mensaje = "";
+                } else {
 
                 $NumeroProductos = count($_SESSION['CARRITO']); //Contabilizar productos en el carrito
                 $producto = array(
@@ -60,14 +68,29 @@ if (isset($_POST['btnAccion'])) {
 
                 );
                 $_SESSION['CARRITO'][$NumeroProductos] = $producto;
+                $mensaje = "Producto agregado al carrito";
+            
+              }
             }
 
-            $mensaje = print_r($_SESSION, true);
+            //$mensaje = print_r($_SESSION, true);
+            
 
+        break;
 
+        case 'Eliminar':
+            if(is_numeric($_POST['id'])) {
+               $ID=$_POST['id'];
 
-
-
+               foreach ($_SESSION['CARRITO'] as $indice => $producto) {
+                   if ($producto['ID'] == $ID) {
+                       unset($_SESSION['CARRITO'][$indice]);
+                       echo "<script>alert('Elemento borrado...');</script>";
+                   }
+               }
+            } else {
+                $mensaje .="Upss... ID incorrecto".$ID."<br>";
+            }
         break;
         
         default:
