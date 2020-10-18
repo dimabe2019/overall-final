@@ -12,12 +12,13 @@ $lista = $_SESSION['lista'];
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="stylesheet" href="../css/index.css">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
     <title>Catalogo</title>
 </head>
 <body style="background: url(../img/decarga2.png) no-repeat center center fixed;">
 
-<div class="container">
+<div class="container-fluid">
 
 <?php include "encabezado.php"; ?>
 
@@ -49,7 +50,7 @@ $lista = $_SESSION['lista'];
 <!-- fin del carousel -->
 
             <!-- Columna 1-->
-            <div class="col-6 col-md-12 " style="margin:0px;background: #F9F9F9;padding: 10px 20px;border-radius: 5px;border:outset;">
+            <div class="col-6 col-md-12 " style="margin:0px;background: #F9F9F9;padding: 10px 20px;border-radius: 5px;">
 
 <h2 align="center">CATALOGOS DE PRODUCTOS</h2>
 <table border= "0" width="700" align="center" class="table">
@@ -110,6 +111,8 @@ if (is_array($lista)) {
 </div>
 
 <!-- fin de Modal -->
+
+<?php include '../Vistas/footer.php';?>
 
 <script>
 

@@ -19,22 +19,23 @@ if(!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true){
 <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="stylesheet" href="../css/index.css">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
     <title>Carrito</title>
 </head>
 <body style="background: url(../img/decarga2.png) no-repeat center center fixed;">
-    <div class="container">
+    <div class="container-fluid">
 
     <?php include '../Vistas/encabezado.php'; ?>
 
     <br>
     <div class="page-header">
-        <h1>Hola, <b><?php echo htmlspecialchars($_SESSION["username"]); ?></b>. Bienvenid@ a nuestro sitio.</h1>
+        <h1>Hola, <b><?php echo htmlspecialchars($_SESSION["username"]); ?></b>. Bienvenid@.</h1>
         
     </div>
     <p>
         <a href="reset-password.php" class="btn btn-warning">Cambia tu contraseña</a>
-        <a href="logout.php" class="btn btn-danger">Cierra la sesión</a>
+        <!-- <a href="logout.php" class="btn btn-danger">Cierra la sesión</a> -->
     </p>
     <h3>Listas del carrito</h3>
         <?php if (!empty($_SESSION['CARRITO'])) { ?>
@@ -74,7 +75,7 @@ if(!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true){
 
     </div>
 
-
+    <?php include '../Vistas/footer.php';?>
 
 <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>

@@ -122,11 +122,6 @@ include '../Utils/conexion.php';
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
     <title>OVERALL</title>
     <link rel="stylesheet" href="../css/index.css">
-    <!-- <link rel="stylesheet" href="css/bootstrap.min.css">
-    <link rel="stylesheet" href="css/index.css">
-    <link href="fontawesome-free-5.14.0-web/css/all.css" rel="stylesheet">
-    <link href="fontawesome-free-5.14.0-web/css/solid.css" rel="stylesheet">
-    <link href="fontawesome-free-5.14.0-web/js/all.js" rel="stylesheet"> -->
 </head>
 
 <body style="background: url(../img/decarga2.png) no-repeat center center fixed;">
@@ -153,7 +148,7 @@ include '../Utils/conexion.php';
                         <div class="col-12 forgot">
                         <a href="#">Olvide mi contraseña</a>
                     </div>
-                    <p>¿No tienes una cuenta? <a href="register.php">Regístrate ahora</a>.</p>
+                    <p style="color: blue;">¿No tienes una cuenta? <a href="register.php">Regístrate</a>.</p>
                     </form>
                 </div>
             </div>
