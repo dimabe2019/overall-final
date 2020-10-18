@@ -28,8 +28,8 @@ define("COD", "AES-128-ECB"); //Esta es la encryptacion
    <?php include '../Vistas/encabezado.php';?>
 
    <div class="alert alert-success">
-   	<?php echo $mensaje;//print_r($_POST);?> 
-	   <a href="#" class="badge badge-success">Ver Carrito</a>
+	   <?//php echo $mensaje;//print_r($_POST);?>
+	   <a href="mostrarCarrito.php" class="badge badge-success">Ver Carrito</a>
    </div>
 
    <div class="row">
@@ -47,13 +47,15 @@ define("COD", "AES-128-ECB"); //Esta es la encryptacion
 
 	    <?php  foreach($listarProductos as $producto){  ?>
 			<div class="col-md-4">
-				<div class="card mb-4 shadow-sm">
-					<img title="<?php echo $producto['Nombre'];?>" alt="<?php echo $producto['Nombre'];?>" data-toggle="popover" data-content="<?php echo $producto['Descripcion'];?>" data-trigger="hover" class="card-img-top" src="../img/imgProd/<?php echo $producto['Imagen'];?>" alt="">
+				<div class="card mb-4">
+					<div style="width: 100%;">
+						<img class="img-fluid" style="width: 180px; height: 200px; padding-top: 20px;" title="<?php echo $producto['Nombre'];?>" alt="<?php echo $producto['Nombre'];?>" data-toggle="popover" data-content="<?php echo $producto['Descripcion'];?>" data-trigger="hover" src="data:image/png;base64,<?php echo base64_encode( $producto['Imagen']);?>">
+					</div>
 					<div class="card-body">
 						<span><?php echo $producto['Nombre'];?></span>
 						<h5 class="card-title">$<?php echo $producto['Precio'];?></h5>
-						<p class="card-text">Descricion</p>
-						<form action="" method="post">
+						<p class="card-text">Cantidad</p>
+						<form class="form-group" action="" method="post">
 							<!-- hidden para que se oculten los elementos -->
 							<input type="hidden" name="id" id="id" value="<?php echo $producto['ID'];?>">
 							<input type="hidden" name="nombre" id="nombre" value="<?php echo $producto['Nombre'];?>">

@@ -9,7 +9,7 @@ class MetodosControls
         $cnx = new ConexionDB();
         $cn=$cnx->getConexion();
 
-        $res=$cn->prepare("select * from productos");
+        $res=$cn->prepare("select * from nuestrosproductos");
         $res->execute();
 
          foreach ($res as $row) {
@@ -23,7 +23,7 @@ class MetodosControls
         $cnx = new ConexionDB();
         $cn=$cnx->getConexion();
 
-        $res=$cn->prepare("select * from productos where codpro=$cod");
+        $res=$cn->prepare("select * from nuestrosproductos where ID=$cod");
         $res->execute();
 
          foreach ($res as $row) {

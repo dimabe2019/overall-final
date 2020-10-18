@@ -114,10 +114,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
 </head>
 
 <body style="background: url(../img/decarga2.png) no-repeat center center fixed;">
-    
- <h1 align="center">REGISTRATE</h1>
-
-        <div class="modal-dialog text-center">
+            <div class="modal-dialog text-center">
             <div class="col-sm-8 main-section">
                 <div class="modal-content">
                     <div class="col-12 user-img">
@@ -136,11 +133,11 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
                             <input class="form-control" type="password" name="confirm_password" value="<?php echo $confirm_password; ?>" placeholder="Confirmar contraseña">
                             <span class="help-block"><?php echo $confirm_password_err; ?></span>
                         </div>
-                        <div class="form-group">
+                        <div class="form">
                         <input type="submit" class="btn btn-primary" value="Ingresar">
-                        <input type="reset" class="btn btn-default" value="Borrar">
+                        <input type="reset" class="btn btn-danger" value="Borrar">
                         </div>
-                        <p>¿Ya tienes una cuenta? <a href="../Vistas/login.php">Ingresa aquí</a>.</p>
+                        <p style="color: blue;">¿Ya tienes una cuenta? <a href="../Vistas/login.php">Ingresa aquí</a>.</p>
                         
                     </form>
                 </div>

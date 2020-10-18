@@ -39,9 +39,9 @@ if(!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true){
     </p>
     <h3>Listas del carrito</h3>
         <?php if (!empty($_SESSION['CARRITO'])) { ?>
-    <table class="table table-bordered" style="background:floralwhite;">
+    <table class="table table-bordered " style="background:white;">
         <tbody>
-            <tr>
+            <tr class="thead-dark">
                 <th width="40%">Descripcion</th>
                 <th width="15%" class="text-center">Cantidad</th>
                 <th width="20%" class="text-center">Precio</th>
