@@ -11,8 +11,8 @@ include '../Vistas/carrito.php';
 <head>
 <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="../css/estilos.css">
-    <link href="https://fonts.googleapis.com/css?family=Open+Sans:400,600,700" rel="stylesheet">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="stylesheet" href="../css/index.css">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
     <title>Cotizar</title>
 </head>
@@ -60,19 +60,24 @@ include '../Vistas/carrito.php';
 
             }
 
-            echo "<h3>".$total."</h3>";
+            //echo "<h3>".$total."</h3>";
      }
     
     ?>
 
-    <div class="jumbotron">
-        <h1 class="display-4">Title</h1>
-        <p class="lead">Subtitle</p>
+    <div class="jumbotron text-center">
+        <h1 class="display-4">¡Paso Final!</h1>
         <hr class="my-4">
-        <p>Content</p>
+        <p class="lead">Estas a punto de terminar la cotizacion por la cantidad de: 
+            <h4>$<?php echo number_format($total,2); ?> </h4>
+        </p>
+        <p>Los productos podràn ser adquiridos una vez que se realice el pago correspondiente<br>
+            <strong>(para aclaraciones: overall@gmail.com)</strong>
+        </p>
+        <button class="btn btn-primary" type="submit" name="cotizacion">Enviar cotizaciòn</button>
     </div>
     
-    
+    <?php include '../Vistas/footer.php';?>
     
     </div>
 
