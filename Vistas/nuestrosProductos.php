@@ -26,7 +26,7 @@ include '../Vistas/carrito.php';
 
   <?php if($mensaje != "") { ?>
    <div class="alert alert-success">
-	   <?//php echo $mensaje;//print_r($_POST);?>
+	   <?php echo $mensaje;//print_r($_POST);?>
 	   <a href="mostrarCarrito.php" class="badge badge-success">Ver Carrito</a>
    </div>
   <?php } ?>

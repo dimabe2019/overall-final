@@ -75,7 +75,6 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
                     // Set parameters
                     $param_username = $username;
                     $param_password = password_hash($password, PASSWORD_DEFAULT); // Creates a password hash
-                    
                     // Attempt to execute the prepared statement
                     if(mysqli_stmt_execute($stmt)){
                         // Redirect to login page
@@ -126,7 +125,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
                             <span class="help-block"><?php echo $username_err; ?></span>
                         </div>
                         <div class="form-group <?php echo (!empty($password_err)) ? 'has-error' : ''; ?>"" id="password-group">
-                            <input class="form-control" type="password" name="password" value="<?php echo $password; ?> placeholder="Contraseña">
+                            <input class="form-control" type="password" name="password" value="<?php echo $password; ?>" placeholder="Contraseña">
                             <span class="help-block"><?php echo $password_err; ?></span>
                         </div>
                         <div class="form-group <?php echo (!empty($confirm_password_err)) ? 'has-error' : ''; ?>" id="password2-group">

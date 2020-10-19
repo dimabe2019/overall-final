@@ -71,10 +71,10 @@ include '../Vistas/carrito.php';
         <p class="lead">Estas a punto de terminar la cotizacion por la cantidad de: 
             <h4>$<?php echo number_format($total,2); ?> </h4>
         </p>
-        <p>Los productos podràn ser adquiridos una vez que se realice el pago correspondiente<br>
+        <p>Los productos podrán ser adquiridos una vez que se realice el pago correspondiente<br>
             <strong>(para aclaraciones: overall@gmail.com)</strong>
         </p>
-        <button class="btn btn-primary" type="submit" name="cotizacion">Enviar cotizaciòn</button>
+        <button class="btn btn-primary" type="submit" name="cotizacion">Enviar cotización</button>
     </div>
     
     <?php include '../Vistas/footer.php';?>
