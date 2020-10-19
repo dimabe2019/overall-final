@@ -21,7 +21,7 @@
         </a>
       </li>
       <li class="nav-item active">
-        <a class="nav-link" href="#">Nuestros Aliados <span class="sr-only">(current)</span>
+        <a class="nav-link" href="stores.php">Nuestros Aliados <span class="sr-only">(current)</span>
           <img src="../img/colombia.png" width="20px" height="20px" alt="">
         </a>
       </li>

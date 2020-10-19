@@ -32,6 +32,18 @@ class MetodosControls
         return $lista; 
     }
 
+    public function ListarFerreterias(){
+        $cnx = new ConexionDB();
+        $cn=$cnx->getConexion();
+
+        $res=$cn->prepare("select * from stores");
+        $res->execute();
+
+         foreach ($res as $row) {
+            $listaFerret[] =$row;
+        } 
+        return $listaFerret; 
+    }
 
 
 
