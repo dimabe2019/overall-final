@@ -67,8 +67,10 @@ include '../Utils/conexion.php';
 
                                 
                                 // La contraseña es correcta, así que inicie una nueva sesión
-                                session_start();
-
+                                if(!isset($_SESSION)) 
+                                { 
+                                    session_start(); 
+                                }
                                 // Almacenar datos en variables de sesión
                                 $_SESSION["loggedin"] = true;
                                 $_SESSION["id"] = $id;

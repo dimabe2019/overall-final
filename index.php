@@ -7,7 +7,7 @@
     <title>Overrall</title>
     <script>
     function ingresar(){
-        location.href='../Controls/FerreteriaControls.php?op=1';
+        location.href='Controls/FerreteriaControls.php?op=1';
     }
     </script>
 </head>
