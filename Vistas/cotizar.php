@@ -24,43 +24,55 @@ include '../Vistas/carrito.php';
 
     <?php 
     
-     if($_POST){
-         $total=0;
-         $SID = session_id();
-         $Correo=$_POST['email']; 
+    if($_POST){
+        $total=0;
+        $SID = session_id();
+        $email=$_POST['email']; 
 
-         foreach ($_SESSION['CARRITO'] as $indice => $producto) {
-             
-            $total = $total + ($producto['PRECIO']*$producto['CANTIDAD']);
-         }
-
-         $cnx = new ConexionDB();
-			$cn=$cnx->getConexion();
-
-			$res=$cn->prepare("INSERT INTO `ventas`(`ID`, `ClaveTransaccion`, `PayplaDatos`, `Fecha`, `Correo`, `Total`, `Status`) VALUES (NULL, :ClaveTransaccion,'', NOW(), :Correo,:Total,'pendiente');");
-            $res->bindParam(":ClaveTransaccion",$SID);
-            $res->bindParam(":Correo",$Correo);
-            $res->bindParam(":Total",$total);
-            $res->execute();
-            $idVenta=$cn->lastInsertId();
-            //$listarProductos=$res->fetchAll(PDO::FETCH_ASSOC);
+        foreach ($_SESSION['CARRITO'] as $indice => $producto) {
             
-            foreach ($_SESSION['CARRITO'] as $indice => $producto) {
-             
+        $total = $total + ($producto['precio']*$producto['cantidad']);
+        }
+
+        $cnx = new ConexionDB();
+        $cn=$cnx->getConexion();
+
+        $res=$cn->prepare("INSERT INTO `sales`(`id`, `claveTransaccion`, `fecha`, `total`, `email`, `status`, `paypalDatos`) VALUES (NULL, :claveTransaccion, NOW(), :total, :email,'pendiente', '');");
+        $res->bindParam(":claveTransaccion",$SID);
+        $res->bindParam(":email",$email);
+        $res->bindParam(":total",$total);
+        $res->execute();
+        $idVenta=$cn->lastInsertId();
+        //$listarProductos=$res->fetchAll(PDO::FETCH_ASSOC);
+       
+
+
+        foreach ($_SESSION['CARRITO'] as $indice => $producto) {
+            
             $cnx = new ConexionDB();
             $cn=$cnx->getConexion();
             
-            $res=$cn->prepare("INSERT INTO `detalleventa` (`ID`, `IDVENTA`, `IDPRODUCTO`, `PRECIOUNITARIO`, `CANTIDAD`, `DESCARGADO`) VALUES (NULL,:IDVENTA, :IDPRODUCTO, :PRECIOUNITARIO, :CANTIDAD, 0);"); 
-              
-                $res->bindParam(":IDVENTA",$idVenta);
-                $res->bindParam(":IDPRODUCTO",$producto['ID']);
-                $res->bindParam(":PRECIOUNITARIO",$producto['PRECIO']);
-                $res->bindParam(":CANTIDAD",$producto['CANTIDAD']);
-                $res->execute();
+            $res=$cn->prepare("INSERT INTO `salesdetails` (`id`, `sales_id`, `precioUnit`, `cantidad`, `descargado`) VALUES (NULL,:sales_id, :precioUnit, :cantidad, 0);"); 
+            
+            $res->bindParam(":sales_id",$idVenta);
+            $res->bindParam(":precioUnit",$producto['precio']);
+            $res->bindParam(":cantidad",$producto['cantidad']);
+            $idDetalleVenta=$cn->lastInsertId();
+            $res->execute();
 
-            }
+        }
 
-            //echo "<h3>".$total."</h3>";
+        foreach ($_SESSION['CARRITO'] as $indice => $producto) {
+            $cnx = new ConexionDB();
+            $cn=$cnx->getConexion();
+        
+            $res=$cn->prepare("INSERT INTO `salesdetailsproducts` (`salesdetails_id`, `products_id`) VALUES (:salesdetails_id, :products_id);");
+            $res->bindParam(":salesdetails_id",$idDetalleVenta);
+            $res->bindParam(":products_id",$producto['id']);
+            $res->execute();
+        
+        }
+
      }
     
     ?>

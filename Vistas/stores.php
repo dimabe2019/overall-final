@@ -35,7 +35,7 @@
             <div class="col-md-4">
               <div class="card mb-4">
                 <div style="width: 100%;">
-                  <img class="img-fluid" style="width: 180px; height: 200px; padding-top: 20px;" title="<?php echo $ferreteria['name'];?>" alt="<?php echo $ferreteria['name'];?>" data-toggle="popover" data-trigger="hover" src="data:image/png;base64,<?php echo base64_encode( $ferreteria['image']);?>">
+                  <img class="img-fluid" style="width: 260px; height: 200px; padding-top: 20px;" title="<?php echo $ferreteria['name'];?>" alt="<?php echo $ferreteria['name'];?>" data-toggle="popover" data-trigger="hover" src="data:image/png;base64,<?php echo base64_encode( $ferreteria['image']);?>">
                 </div>
                 <div class="card-body">
                   <h5><?php echo $ferreteria['name'];?></h5>

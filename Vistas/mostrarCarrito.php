@@ -51,21 +51,21 @@ if(!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true){
             <?php $total=0; ?>
             <?php foreach($_SESSION['CARRITO'] as $indice => $producto) { ?>
             <tr>
-                <td width="40%"><?php echo $producto['NOMBRE']?></td>
-                <td width="15%" class="text-center"><?php echo $producto['CANTIDAD']?></td>
-                <td width="20%" class="text-center">$<?php echo $producto['PRECIO']?></td>
-                <td width="20%" class="text-center">$<?php echo number_format($producto['PRECIO'] * $producto['CANTIDAD'],2 );?></td>
+                <td width="40%"><?php echo $producto['nombre']?></td>
+                <td width="15%" class="text-center"><?php echo $producto['cantidad']?></td>
+                <td width="20%" class="text-center">$<?php echo $producto['precio']?></td>
+                <td width="20%" class="text-center">$<?php echo number_format($producto['precio'] * $producto['cantidad'],2 );?></td>
                 <td width="5%">
                 
                  <form action="" method="post">
-                     <input type="hidden" name="id"  id="id" value="<?php echo $producto['ID'];?>">
+                     <input type="hidden" name="id"  id="id" value="<?php echo $producto['id'];?>">
                  <button class="btn btn-danger" name="btnAccion" value="Eliminar" type="submit">Eliminar</button>
                  </form>
                  
                 
                 </td>
             </tr>
-            <?php $total=$total+($producto['PRECIO']*$producto['CANTIDAD']); ?>
+            <?php $total=$total+($producto['precio']*$producto['cantidad']); ?>
             <?php } ?>
             <tr>
                 <td colspan="3" align="right"><h3>Total</h3></td>

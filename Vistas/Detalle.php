@@ -10,10 +10,10 @@ $lista=$objMetodos->ListarProductosCod($cod);
 
 foreach($lista as $row) {
 
-    $Nombre=$row[1];
-    $Precio=$row[2];
-    $Descripcion=$row[3];
-    $Imagen=$row[4];
+    $nombre=$row[1];
+    $precio=$row[2];
+    $descripcion=$row[3];
+    $imagen=$row[4];
 }
 
 ?>
@@ -31,13 +31,13 @@ foreach($lista as $row) {
     <div class="mb-3" style="max-width: 540px;">
         <div class="row no-gutters">
             <div class="col-md-4">
-                <img src="data:image/png;base64,<?php echo base64_encode($Imagen);?>" width="auto" height="auto" class="card-img" alt="...">
+                <img src="data:image/png;base64,<?php echo base64_encode($imagen);?>" width="auto" height="auto" class="card-img" alt="...">
             </div>
             <div class="col-md-8">
             <div class="card-body">
-                <h5 class="card-title"><?php echo $Nombre; ?></h5>
-                <p class="card-text"><?php echo $Descripcion; ?></p>
-                <h5 class="card-text">$ <?php echo $Precio; ?></h5>
+                <h5 class="card-title"><?php echo $nombre; ?></h5>
+                <p class="card-text"><?php echo $descripcion; ?></p>
+                <h5 class="card-text">$ <?php echo $precio; ?></h5>
             </div>
             </div>
         </div>

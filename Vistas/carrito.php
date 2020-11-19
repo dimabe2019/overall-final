@@ -10,30 +10,30 @@ if (isset($_POST['btnAccion'])) {
         case 'Agregar':
             
             if (is_numeric($_POST['id'])) {
-                $ID=$_POST['id'];
-                $mensaje .= "Ok ID correcto".$ID."<br>";
+                $id=$_POST['id'];
+                $mensaje .= "Ok id correcto".$id."<br>";
             }else {
-                $mensaje .="Upss... ID incorrecto".$ID;
+                $mensaje .="Upss... id incorrecto".$id;
             }
 
             if(is_string($_POST['nombre'])) {
-                $NOMBRE = $_POST['nombre'];
-                $mensaje .= "Ok Nombre correcto".$NOMBRE."<br>";
+                $nombre = $_POST['nombre'];
+                $mensaje .= "Ok Nombre correcto".$nombre."<br>";
 
             } else{
                 $mensaje .= "Upss.. algo pasa con el nombre";break;
             }
 
             if (is_numeric($_POST['precio'])) {
-                $PRECIO = $_POST['precio'];
-                $mensaje .= "Ok Precio correcto".$PRECIO."<br>";
+                $precio = $_POST['precio'];
+                $mensaje .= "Ok precio correcto".$precio."<br>";
             }else{
                 $mensaje .= "Upps... algo pasa con el precio"; break;
             }
 
             if (is_numeric($_POST['cantidad'])) {
-                $CANTIDAD = $_POST['cantidad'];
-                $mensaje .= "Ok Cantidad correcto".$CANTIDAD;
+                $cantidad = $_POST['cantidad'];
+                $mensaje .= "Ok Cantidad correcto".$cantidad;
             }else{
                 $mensaje .= "Upps... algo pasa con la cantidad"; break;
             }
@@ -41,10 +41,10 @@ if (isset($_POST['btnAccion'])) {
             if(!isset($_SESSION['CARRITO'])){
 
                 $producto = array(
-                    'ID' => $ID,
-                    'NOMBRE' => $NOMBRE,
-                    'CANTIDAD' => $CANTIDAD,
-                    'PRECIO' => $PRECIO
+                    'id' => $id,
+                    'nombre' => $nombre,
+                    'cantidad' => $cantidad,
+                    'precio' => $precio
 
                 );
                 $_SESSION['CARRITO'][0] = $producto; 
@@ -52,19 +52,19 @@ if (isset($_POST['btnAccion'])) {
 
             } else {
 
-                $idProductos = array_column($_SESSION['CARRITO'],"ID");
+                $idProductos = array_column($_SESSION['CARRITO'],"id");
 
-                if(in_array($ID,$idProductos)) {
+                if(in_array($id,$idProductos)) {
                       echo "<script>alert('El producto ya ha sido seleccionado');</script>";
                       $mensaje = "";
                 } else {
 
                 $NumeroProductos = count($_SESSION['CARRITO']); //Contabilizar productos en el carrito
                 $producto = array(
-                    'ID' => $ID,
-                    'NOMBRE' => $NOMBRE,
-                    'CANTIDAD' => $CANTIDAD,
-                    'PRECIO' => $PRECIO
+                    'id' => $id,
+                    'nombre' => $nombre,
+                    'cantidad' => $cantidad,
+                    'precio' => $precio
 
                 );
                 $_SESSION['CARRITO'][$NumeroProductos] = $producto;
@@ -80,16 +80,16 @@ if (isset($_POST['btnAccion'])) {
 
         case 'Eliminar':
             if(is_numeric($_POST['id'])) {
-               $ID=$_POST['id'];
+               $id=$_POST['id'];
 
                foreach ($_SESSION['CARRITO'] as $indice => $producto) {
-                   if ($producto['ID'] == $ID) {
+                   if ($producto['id'] == $id) {
                        unset($_SESSION['CARRITO'][$indice]);
                        echo "<script>alert('Elemento borrado...');</script>";
                    }
                }
             } else {
-                $mensaje .="Upss... ID incorrecto".$ID."<br>";
+                $mensaje .="Upss... id incorrecto".$id."<br>";
             }
         break;
         
