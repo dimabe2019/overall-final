@@ -53,27 +53,27 @@
         $listarProductos=$res->fetchAll(PDO::FETCH_ASSOC);
 
         if(isset($_POST['button1'])) { 
-          $res=$cn->prepare("SELECT stores.name, products.nombre, products.imagen FROM products JOIN products_has_stores ON products_has_stores.products_id = products.id JOIN stores ON products_has_stores.stores_id = stores.id WHERE stores_id = 1");
+          $res=$cn->prepare("SELECT stores.name, products.id, products.nombre, products.descripcion, products.imagen FROM products JOIN products_has_stores ON products_has_stores.products_id = products.id JOIN stores ON products_has_stores.stores_id = stores.id WHERE stores_id = 1");
           $res->execute();
           $listarProductos=$res->fetchAll(PDO::FETCH_ASSOC);
         } 
         else if(isset($_POST['button2'])) { 
-          $res=$cn->prepare("SELECT stores.name, products.nombre, products.imagen FROM products JOIN products_has_stores ON products_has_stores.products_id = products.id JOIN stores ON products_has_stores.stores_id = stores.id WHERE stores_id = 2");
+          $res=$cn->prepare("SELECT stores.name, products.id, products.nombre, products.descripcion, products.imagen FROM products JOIN products_has_stores ON products_has_stores.products_id = products.id JOIN stores ON products_has_stores.stores_id = stores.id WHERE stores_id = 2");
           $res->execute();
           $listarProductos=$res->fetchAll(PDO::FETCH_ASSOC);
         }
         else if(isset($_POST['button3'])){
-          $res=$cn->prepare("SELECT stores.name, products.nombre, products.imagen FROM products JOIN products_has_stores ON products_has_stores.products_id = products.id JOIN stores ON products_has_stores.stores_id = stores.id WHERE stores_id = 3");
+          $res=$cn->prepare("SELECT stores.name, products.id, products.nombre, products.descripcion, products.imagen FROM products JOIN products_has_stores ON products_has_stores.products_id = products.id JOIN stores ON products_has_stores.stores_id = stores.id WHERE stores_id = 3");
           $res->execute();
           $listarProductos=$res->fetchAll(PDO::FETCH_ASSOC);
         }
         else if(isset($_POST['button4'])){
-          $res=$cn->prepare("SELECT stores.name, products.nombre, products.imagen FROM products JOIN products_has_stores ON products_has_stores.products_id = products.id JOIN stores ON products_has_stores.stores_id = stores.id WHERE stores_id = 4");
+          $res=$cn->prepare("SELECT stores.name, products.id, products.nombre, products.descripcion, products.imagen FROM products JOIN products_has_stores ON products_has_stores.products_id = products.id JOIN stores ON products_has_stores.stores_id = stores.id WHERE stores_id = 4");
           $res->execute();
           $listarProductos=$res->fetchAll(PDO::FETCH_ASSOC);
         }
         else if(isset($_POST['button5'])){
-          $res=$cn->prepare("SELECT stores.name, products.nombre, products.imagen FROM products JOIN products_has_stores ON products_has_stores.products_id = products.id JOIN stores ON products_has_stores.stores_id = stores.id WHERE stores_id = 5");
+          $res=$cn->prepare("SELECT stores.name, products.id, products.nombre, products.descripcion, products.imagen FROM products JOIN products_has_stores ON products_has_stores.products_id = products.id JOIN stores ON products_has_stores.stores_id = stores.id WHERE stores_id = 5");
           $res->execute();
           $listarProductos=$res->fetchAll(PDO::FETCH_ASSOC);
         }
