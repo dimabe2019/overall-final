@@ -2,7 +2,28 @@
   include '../Utils/conexion.php';
   session_start();
 ?>
+<?php
+  if(isset($_POST['buscar'])) 
+  {
+    $cnx = new ConexionDB();
+    $cn=$cnx->getConexion();
 
+    $buscar = $_POST["palabra"];
+    $res = $cn->prepare("SELECT * FROM products WHERE nombre LIKE '%$buscar%' ");
+    $res->execute();
+    $buscarProductos=$res->fetchAll(PDO::FETCH_ASSOC);
+
+    if (count($buscarProductos) > 0) {
+      foreach ($buscarProductos as $usuarioQuery) {
+        // var_dump($usuario['id']);
+        $_SESSION['producto_id'] = $usuarioQuery['id'];
+        echo  $_SESSION['producto_nombre'] = $usuarioQuery['nombre'];
+        // echo $_SESSION['user_id'];
+      }
+    }
+
+  } // fin if 
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -96,7 +117,9 @@
           </form>
         </div>
         <div class="row">
-          <?php  foreach($listarProductos as $producto){  ?>
+          <?php
+            shuffle($listarProductos);
+            foreach($listarProductos as $producto){  ?>
             <div class="col-md-4">
               <div class="card mb-4">
                 <div style="width: 100%;">

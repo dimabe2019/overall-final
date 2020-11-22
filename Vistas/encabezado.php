@@ -8,10 +8,10 @@
     <span class="navbar-toggler-icon"></span>
   </button>
   <div class="collapse navbar-collapse" id="navbarNav">
-    <form class="form-inline my-2 my-lg-0">
-      <input class="form-control mr-sm-2" type="search" placeholder="Buscar" aria-label="Buscar">
+    <form method="POST" action="" onSubmit="return validarForm(this)"class="form-inline my-2 my-lg-0">
+      <input class="form-control mr-sm-2" type="search" placeholder="Buscar" name="palabra" aria-label="Buscar">
       <div class="input-group-append">
-        <button class="btn btn-info my-2 my-sm-0" type="submit">Buscar</button>
+          <input class="btn btn-info my-2 my-sm-0" type="submit" name="buscar">Buscar</input>
       </div>
     </form>  
     <ul class="navbar-nav mr-auto">
